@@ -1,1 +1,14 @@
-<p>news-item works!</p>
+<mat-card style="margin: 10px;">
+  <mat-card-title>Title</mat-card-title>
+  <mat-card-subtitle>date time</mat-card-subtitle>
+  <mat-card-content>
+<!--    <img mat-card-sm-image *ngIf="message.image"-->
+<!--         [src]="apiUrl + '/uploads/' + message.image"-->
+<!--         [alt]="message.author +  '`s image'">-->
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, ipsa?</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a routerLink="news-details" mat-raised-button>view full</a>
+    <button mat-raised-button>delete</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,44 @@
+<div class="container" style="margin-top: 70px;">
+  <h1>News title</h1>
+  <p>datetime</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi doloribus eius et facilis itaque iure iusto
+    molestiae perferendis, perspiciatis qui quis quisquam quos reiciendis saepe sequi tempora velit veritatis vitae.</p>
+  <h1 style="margin-top: 70px;">Comments</h1>
+  <mat-card>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlign="space-between baseline">
+        <p><strong>John</strong> Lorem ipsum dolor sit amet.</p>
+        <button mat-raised-button color="warn">delete</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="container" style="margin: 50px 0 70px;">
+    <h1>Add comment</h1>
+    <form (ngSubmit)="onSubmit()" #form="ngForm" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Author</mat-label>
+        <input name="Author" required matInput ngModel/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Comment</mat-label>
+        <textarea
+          name="comment"
+          required
+          ngModel
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="3"
+        ></textarea>
+      </mat-form-field>
+      <div>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="form.invalid"
+        >SAVE
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
