@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { News } from '../../../models/news.model';
+import { NewsService } from '../../../services/news.service';
 
 @Component({
   selector: 'app-news-item',
@@ -8,9 +9,19 @@ import { News } from '../../../models/news.model';
 })
 export class NewsItemComponent implements OnInit {
   @Input() newsItem!: News;
-  constructor() { }
+  removing = false;
+
+  constructor(
+    private newsService: NewsService,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  remove() {
+    this.removing = true;
+    this.newsService.removeNews(this.newsItem.id).subscribe(() => {
+      this.removing = false;
+    })
+  }
 }

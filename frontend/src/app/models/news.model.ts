@@ -1,6 +1,6 @@
 export class News {
   constructor(
-    public id: string,
+    public id: number,
     public title: string,
     public datetime: string,
     public description: string,

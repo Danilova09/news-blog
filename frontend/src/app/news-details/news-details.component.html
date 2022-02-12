@@ -1,8 +1,10 @@
 <div class="container" style="margin-top: 70px;">
-  <h1>News title</h1>
-  <p>datetime</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi doloribus eius et facilis itaque iure iusto
-    molestiae perferendis, perspiciatis qui quis quisquam quos reiciendis saepe sequi tempora velit veritatis vitae.</p>
+  <h1>{{ newsItem.title }}</h1>
+  <p>{{ newsItem.datetime }}</p>
+  <p>{{ newsItem.description }}</p>
+  <img mat-card-lg-image *ngIf="newsItem.image"
+       [src]="'http://localhost:5000/' + '/uploads/' + newsItem.image"
+       [alt]="newsItem.title">
   <h1 style="margin-top: 70px;">Comments</h1>
   <mat-card>
     <mat-card-content>

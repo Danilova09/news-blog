@@ -74,6 +74,7 @@ router.post('/', upload.single('image') ,async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
     try {
         const newsId = req.params.id;
+        await db.getConnection().execute(`DELETE FROM comments WHERE news_id = ${newsId}`);
         await db.getConnection().execute(`DELETE FROM news WHERE id = ${newsId}`);
         res.send(`newsItem was deleted`);
     } catch (e) {

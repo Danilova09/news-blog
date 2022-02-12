@@ -7,7 +7,7 @@
                [alt]="newsItem.title">
   </mat-card-content>
   <mat-card-actions>
-    <a routerLink="news-details" mat-raised-button>view full</a>
-    <button mat-raised-button>delete</button>
+    <a [routerLink]="['news', newsItem.id]" mat-raised-button>view full</a>
+    <button mat-raised-button (click)="remove()" [disabled]="removing">delete</button>
   </mat-card-actions>
 </mat-card>
