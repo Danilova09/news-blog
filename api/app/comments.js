@@ -8,12 +8,13 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try {
-
+        let query = ''
         if (req.query.news_id) {
-            console.log(req.query.news_id);
+            query = `SELECT comments.id, news_id, comments.description, comments.author from comments where news_id = ${req.query.news_id}`;
+            let [comments] = await db.getConnection().execute(query);
+            return res.send(comments);
         }
-
-        let query = 'SELECT id, author, comment, news_id FROM comments';
+        query = 'SELECT id, author, description, news_id FROM comments';
         let [comments] = await db.getConnection().execute(query);
         return res.send(comments);
     } catch (e) {

@@ -7,17 +7,14 @@ import { NewsService } from '../../../services/news.service';
   templateUrl: './news-item.component.html',
   styleUrls: ['./news-item.component.sass']
 })
-export class NewsItemComponent implements OnInit {
+export class NewsItemComponent {
   @Input() newsItem!: News;
   removing = false;
 
   constructor(
     private newsService: NewsService,
   ) { }
-
-  ngOnInit(): void {
-  }
-
+  
   remove() {
     this.removing = true;
     this.newsService.removeNews(this.newsItem.id).subscribe(() => {

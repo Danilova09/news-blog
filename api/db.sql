@@ -18,7 +18,7 @@ create table comments
     id      int auto_increment,
     news_id int         not null,
     author  varchar(32) null,
-    comment text        not null,
+    description text        not null,
     constraint comments_pk
         primary key (id),
     constraint comments_news_id_fk
@@ -36,11 +36,11 @@ INSERT INTO news (id, title, description, image, datetime)
 VALUES (4, 'news title 4', 'news 4 text', null, DEFAULT);
 
 
-INSERT INTO comments (id, news_id, author, comment)
+INSERT INTO comments (id, news_id, author, description)
 VALUES (1, 1, 'James', 'James''s comment');
-INSERT INTO comments (id, news_id, author, comment)
+INSERT INTO comments (id, news_id, author, description)
 VALUES (2, 2, 'Amanda', 'Amanda''s comment');
-INSERT INTO comments (id, news_id, author, comment)
+INSERT INTO comments (id, news_id, author, description)
 VALUES (3, 3, 'Jinx', 'Jix''s comment');
-INSERT INTO comments (id, news_id, author, comment)
+INSERT INTO comments (id, news_id, author, description)
 VALUES (4, 4, 'Violette', 'Violette''s comment');

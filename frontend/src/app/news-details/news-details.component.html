@@ -6,20 +6,24 @@
        [src]="'http://localhost:5000/' + '/uploads/' + newsItem.image"
        [alt]="newsItem.title">
   <h1 style="margin-top: 70px;">Comments</h1>
-  <mat-card>
-    <mat-card-content>
-      <div fxLayout="row" fxLayoutAlign="space-between baseline">
-        <p><strong>John</strong> Lorem ipsum dolor sit amet.</p>
-        <button mat-raised-button color="warn">delete</button>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <button mat-raised-button color="primary" (click)="getComments()" style="margin-bottom: 40px;">show comments</button>
+  <div class="comments" *ngIf="showComments">
+    <mat-card *ngFor="let comment of newsComments" style="margin-top: 15px;">
+      <mat-card-content>
+        <div fxLayout="row" fxLayoutAlign="space-between baseline">
+          <p><strong>{{ comment.author | anonymous}}</strong></p>
+          <p>{{ comment.description }}</p>
+          <button mat-raised-button color="warn">delete</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
   <div class="container" style="margin: 50px 0 70px;">
     <h1>Add comment</h1>
-    <form (ngSubmit)="onSubmit()" #form="ngForm" fxLayout="column">
+    <form (ngSubmit)="onSubmit()" #form="ngForm" fxLayout="column" style="padding-bottom: 70px;">
       <mat-form-field appearance="outline">
         <mat-label>Author</mat-label>
-        <input name="Author" required matInput ngModel/>
+        <input name="author" required matInput ngModel/>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Comment</mat-label>

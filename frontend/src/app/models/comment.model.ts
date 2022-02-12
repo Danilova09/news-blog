@@ -6,3 +6,9 @@ export class Comment {
     public newsId: number,
   ) {}
 }
+
+export interface CommentData {
+  title: string;
+  description: string;
+  news_id: number;
+}

@@ -16,14 +16,12 @@ export class NewsService {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute
-  ) {
-  }
+  ) {}
 
   fetchNews() {
     this.newsInterval.subscribe(() => {
       this.http.get<News[]>(`http://localhost:5000/news`).pipe(
         map((news: News[]) => {
-          console.log(news);
           if (news.length > 0) {
             this.lastDatetime = news[0].datetime;
             return news.map(news => {

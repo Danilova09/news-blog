@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FormComponent } from './form/form.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnonymousPipe } from './pipes/anonymous.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     FileInputComponent,
     FormComponent,
     NewsDetailsComponent,
+    AnonymousPipe,
   ],
   imports: [
     BrowserModule,
