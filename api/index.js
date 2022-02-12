@@ -10,7 +10,8 @@ const port = 5000;
 app.use(cors({origin: 'http://localhost:4200'}));
 app.use(express.json());
 app.use(express.static('public'));
-app.use('/news', comments);
+app.use('/news', news);
+app.use('/comments', comments);
 
 const run = async () => {
     await db.init();

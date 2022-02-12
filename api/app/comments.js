@@ -8,7 +8,12 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try {
-        let query = 'SELECT id, title, image, datetime FROM comments';
+
+        if (req.query.news_id) {
+            console.log(req.query.news_id);
+        }
+
+        let query = 'SELECT id, author, comment, news_id FROM comments';
         let [comments] = await db.getConnection().execute(query);
         return res.send(comments);
     } catch (e) {
@@ -16,44 +21,28 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.post('/' ,async (req, res, next) => {
     try {
-        const [comments] = await db.getConnection().execute('SELECT * FROM comments WHERE id = ?', [req.params.id]);
-
-        const commentsItem = comments[0];
-
-        if (!commentsItem) {
-            return res.status(404).send({message: 'Not found'});
+        if (!req.body.description || !req.body.news_id) {
+            return res.status(400).send({error: 'Fill in required fields'});
         }
 
-        return res.send(commentsItem);
-    } catch (e) {
-        next(e);
-    }
-});
-
-router.post('/', upload.single('image') ,async (req, res, next) => {
-    try {
-        if (!req.body.title || !req.body.description) {
-            return res.status(400).send({message: 'Title and description are required'});
-        }
-        const comments = {
-            title: req.body.title,
+        const comment = {
+            news_id: parseInt(req.body.news_id),
+            author: req.body.author,
             description: req.body.description,
-            image: null,
         };
-        if (req.file) {
-            comments.image = req.file.filename;
-        }
-        let query = 'INSERT INTO comments (title, description, image) VALUES (?, ?, ?)';
+        
+        let query = 'INSERT INTO comments (author, description, news_id) VALUES (?, ?, ?, ?, ?)';
+
         const [results] = await db.getConnection().execute(query, [
-            comments.title,
-            comments.description,
-            comments.image
+            comment.author,
+            comment.description,
+            comment.news_id,
         ]);
 
         const id = results.insertId;
-        return res.send({message: 'Created new comments', id});
+        return res.send({message: 'Created new comment', id});
     } catch (e) {
         next(e);
     }
@@ -63,7 +52,7 @@ router.delete('/:id', async (req, res, next) => {
     try {
         const commentsId = req.params.id;
         await db.getConnection().execute(`DELETE FROM comments WHERE id = ${commentsId}`);
-        res.send(`commentsItem was deleted`);
+        res.send(`comment was deleted`);
     } catch (e) {
         next(e);
     }
