@@ -4,7 +4,6 @@ export class News {
     public title: string,
     public datetime: string,
     public description: string,
-    public comments: string[],
     public image: string,
   ) {}
 }

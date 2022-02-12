@@ -1,11 +1,10 @@
 <mat-card style="margin: 10px;">
-  <mat-card-title>Title</mat-card-title>
-  <mat-card-subtitle>date time</mat-card-subtitle>
+  <mat-card-title>{{ newsItem.title }}</mat-card-title>
+  <mat-card-subtitle>{{ newsItem.datetime }}</mat-card-subtitle>
   <mat-card-content>
-<!--    <img mat-card-sm-image *ngIf="message.image"-->
-<!--         [src]="apiUrl + '/uploads/' + message.image"-->
-<!--         [alt]="message.author +  '`s image'">-->
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, ipsa?</p>
+          <img mat-card-sm-image *ngIf="newsItem.image"
+               [src]="'http://localhost:5000/' + '/uploads/' + newsItem.image"
+               [alt]="newsItem.title">
   </mat-card-content>
   <mat-card-actions>
     <a routerLink="news-details" mat-raised-button>view full</a>

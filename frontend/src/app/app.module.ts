@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { FormComponent } from './form/form.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NewsDetailsComponent } from './news-details/news-details.component';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

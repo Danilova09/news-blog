@@ -1,6 +1,4 @@
 <div class="container" style="margin-top: 70px">
-  <app-news-item></app-news-item>
-  <app-news-item></app-news-item>
-  <app-news-item></app-news-item>
-  <app-news-item></app-news-item>
+  <app-news-item *ngFor="let newsItem of news;"
+                 [newsItem]="newsItem"></app-news-item>
 </div>
